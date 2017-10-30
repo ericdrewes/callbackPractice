@@ -60,12 +60,15 @@ multiply(4, 3, function(answer) {
 // If the name does not exist, invoke the callback with false as the argument.
 
 //Code Here
+var names = ['apple', 'Colt', 'building', 'bob', 'joe']
 
 var contains = function(arr, name, cb) {
-	if (arr.name !== 1) {
-		cb(true)
-	} else {
-		cb(false)
+	for (i = 0; i < arr.length; i++) {
+		if (arr[i] === name) {
+			cb(true)
+		} else {
+			cb(false)
+		}
 	}
 }
 
@@ -81,11 +84,22 @@ contains(names, 'Colt', function(result) {
 // Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 
 //Code Here
-uniqArr = []
 var uniq = function(arr, cb) {
-	cb(arr.filter(uniq.arr))
+	var newArr = []
+	for (var i = 0; i < arr.length; i++) {
+		var found = undefined
+		for (var j = 0; j < newArr.length; j++) {
+			if (arr[i] === newArr[j]) {
+				found = true
+				break
+			}
+		}
+		if (found !== true) {
+			newArr.push(arr[i])
+		}
+	}
+	cb(newArr)
 }
-
 uniq(names, function(uniqArr) {
 	console.log('The new names array with all the duplicate items removed is ', uniqArr)
 })
@@ -95,7 +109,9 @@ uniq(names, function(uniqArr) {
 //Code Here
 
 var each = function(arr, cb) {
-	cb(arr.name)
+	for (i = 0; i < arr.length; i++) {
+		cb(arr[i], i)
+	}
 }
 
 each(names, function(item, indice) {
@@ -107,9 +123,12 @@ each(names, function(item, indice) {
 
 // Code here
 
-var getUserById = fuinction(users, id, cb)
-if (users[id] === 0) {
-	cb(users, id)
+var getUserById = function(obj, userID, cb) {
+	for (var prop in obj) {
+		if (obj[prop].id == userID) {
+			cb(obj[prop])
+		}
+	}
 }
 
 var users = [
