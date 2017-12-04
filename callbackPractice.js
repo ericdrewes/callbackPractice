@@ -23,44 +23,47 @@ var first = function(arr, cb) {
 	cb(arr[0])
 }
 
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
-first(names, function(firstName) {
-	console.log('The first name in names is ' + firstName)
-	return firstName
-})
+
+
+	first(names, function(firstName) {
+		console.log('The first name in names is ' + firstName)
+		return firstName
+	})
 
 // 2. Write a function called last that takes in an array and a callback function, then invokes the callback, passing in the last element in the array as the argument.
 
 //Code Here
 
-var last = function(arr, cb) {
-	cb(arr[1])
-}
+	var last = function(arr, cb) {
+		cb(arr[1])
+	}
 
-last(names, function(lastName) {
-	console.log('The last name in names is ' + lastName)
-	return lastName
-})
+	last(names, function(lastName) {
+		console.log('The last name in names is ' + lastName)
+		return lastName
+	})
 
 // 3. Write a function called multiply that takes in three parameters: two numbers and a callback function.  Invoke the callback, passing in the product of the two numbers multiplied as the argument.
 
 //Code Here
 
-var multiply = function(num1, num2, cb) {
-	cb(num1 * num2)
-}
+	var multiply = function(num1, num2, cb) {
+		cb(num1 * num2)
+	}
 
-multiply(4, 3, function(answer) {
-	console.log('The answer is ' + answer) //should console.log 12
-})
+	multiply(4, 3, function(answer) {
+		console.log('The answer is ' + answer) //should console.log 12
+	})
 
 // 4. Write a function called contains that takes in three parameters: an array, a name and a callback.  First, check if the name exists in the array.
 // If it does, invoke the callback with true as the argument.
 // If the name does not exist, invoke the callback with false as the argument.
 
 //Code Here
-var names = ['apple', 'Colt', 'building', 'bob', 'joe']
+var names = ['apple', 'Colt', 'Fred', 'bob', 'eric']
 
 var contains = function(arr, name, cb) {
 	for (i = 0; i < arr.length; i++) {
@@ -84,52 +87,52 @@ contains(names, 'Colt', function(result) {
 // Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 
 //Code Here
-var uniq = function(arr, cb) {
-	var newArr = []
-	for (var i = 0; i < arr.length; i++) {
-		var found = undefined
-		for (var j = 0; j < newArr.length; j++) {
-			if (arr[i] === newArr[j]) {
-				found = true
-				break
+	var uniq = function(arr, cb) {
+		var newArr = []
+		for (var i = 0; i < arr.length; i++) {
+			var found = undefined
+			for (var j = 0; j < newArr.length; j++) {
+				if (arr[i] === newArr[j]) {
+					found = true
+					break
+				}
+			}
+			if (found !== true) {
+				newArr.push(arr[i])
 			}
 		}
-		if (found !== true) {
-			newArr.push(arr[i])
-		}
+		cb(newArr)
 	}
-	cb(newArr)
-}
-uniq(names, function(uniqArr) {
-	console.log('The new names array with all the duplicate items removed is ', uniqArr)
-})
+	uniq(names, function(uniqArr) {
+		console.log('The new names array with all the duplicate items removed is ', uniqArr)
+	})
 
 // 6. Write a function called each that takes in an array of names and a callback function. For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 
 //Code Here
 
-var each = function(arr, cb) {
-	for (i = 0; i < arr.length; i++) {
-		cb(arr[i], i)
+	var each = function(arr, cb) {
+		for (i = 0; i < arr.length; i++) {
+			cb(arr[i], i)
+		}
 	}
-}
 
-each(names, function(item, indice) {
-	console.log('The item in the ' + indice + ' position is ' + item)
-})
+	each(names, function(item, indice) {
+		console.log('The item in the ' + indice + ' position is ' + item)
+	})
 
 // 7. Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
 // When the correct user object is found, invoke the callback with the user object as an argument.
 
 // Code here
 
-var getUserById = function(obj, userID, cb) {
-	for (var prop in obj) {
-		if (obj[prop].id == userID) {
-			cb(obj[prop])
+		var getUserById = function(obj, userID, cb) {
+			for (var prop in obj) {
+				if (obj[prop].id == userID) {
+					cb(obj[prop])
+				}
+			}
 		}
-	}
-}
 
 var users = [
 	{
@@ -152,13 +155,13 @@ var users = [
 	}
 ]
 
-getUserById(users, '16t', function(user) {
-	console.log(
-		'The user with the id 16t has the email of ' +
-			user.email +
-			' the name of ' +
-			user.name +
-			' and the address of ' +
-			user.address
-	)
-})
+		getUserById(users, '16t', function(user) {
+			console.log(
+				'The user with the id 16t has the email of ' +
+					user.email +
+					' the name of ' +
+					user.name +
+					' and the address of ' +
+					user.address
+			)
+		})
